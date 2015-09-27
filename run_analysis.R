@@ -51,6 +51,7 @@ AllData <- rbind(testData, trainData)
 ## Step 2. 
 ##Extracts only the measurements on the mean and standard deviation for each measurement. 
 # *****************************************************************************************
+
 # creating a vector of Indexs where mean() and std() exist in column names of AllData data frame
 subsetFeatVarIndex <- grep("mean\\(\\)|std\\(\\)", names(AllData))
 
@@ -83,11 +84,11 @@ FinalDataMelt <- melt(FinalData, id.vars=c("activityName", "subjectId"), measure
 
 # creating new tidy data.frame “tidyData”, using cast function to reshare data and provide 
 # average of each measurement variable for each activity and each subject
-tidyData <- dcast(FinalDataMelt, activityName + subjectId ~variable, mean)
+tidy <- dcast(FinalDataMelt, activityName + subjectId ~variable, mean)
 
 # writng new tidy data.frame "tidyData" to a text file excluding row names to create
 # the required tidy data file 180 observations and 68 columns
 # (2 columns for activityName and subjectID and 66 columns for measurement variables) 
 
-write.table(tidyData, "tidyData.txt", sep="\t", row.names=FALSE)
+write.table(tidy, "tidy.txt", sep="\t", row.names=FALSE)
 
