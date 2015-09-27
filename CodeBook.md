@@ -19,6 +19,7 @@ ________________________________________
 * X_test.txt: Test set.
 *	y_test.txt: Test activity Id Labels
 *	subject_train.txt: Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.
+
 ###The following files are available for the train and test data. Their descriptions are equivalent:
 * train/Inertial Signals/total_acc_x_train.txt: The acceleration signal from the smartphone accelerometer X axis in standard gravity units g. Every row shows a 128 element vector. ###The same description applies for the:
 *	total_acc_x_train.txt and total_acc_z_train.txt files for the Y and Z axis.
@@ -29,10 +30,12 @@ ________________________________________
 ##Details about Files to be used in analysis from Source Data 
 ###Common Files
 *	features.txt: 561 rows of 2 varibles (feature Identifier and feature Name)
-*	activity_labels.txt: 6 rows of 2 variables (activity identifier and activity name) ###Test Dataset
+*	activity_labels.txt: 6 rows of 2 variables (activity identifier and activity name)
+###Test Dataset
 *	xTest.txt: 2947 rows of 561 measurement variables. These are measurement variables listed in features.txt
 *	yTest.txt: 2947 rows of 1 variables. This is the activity Identifier
-*	subjectTest.txt: 2497 rows of 1 variable (subject Identifier) ###Training Dataset
+*	subjectTest.txt: 2497 rows of 1 variable (subject Identifier)
+###Training Dataset
 *	xTrain.txt: 7352 rows of 561 measurement variables. These are measurement variables listed in features.txt
 *	yTrain.txt: 7352 rows of 1 variables. This is the activity Identifier
 *	subjectTrain.txt: 7352 rows of 1 variable (subject Identifier) 
