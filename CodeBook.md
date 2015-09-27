@@ -3,7 +3,7 @@ Course Project for Gettting and Cleaning Data based on Human Activity Recognitio
 This CodeBook that describes the variables, the data, and any transformations or work that was performed to clean up
 the source data to create a tidy dataset as per requirements of course project.
 ________________________________________
-##Information about Source Data Experment
+##Information about Source Data Experiment
 The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years.
 Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing
 a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial
@@ -11,9 +11,9 @@ linear acceleration and 3-axial angular velocity at a constant rate of 50Hz.
 The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned
 into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data.
 ________________________________________
-##Original Data Source
-#Original data: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
-#Original description of the dataset: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+SmartphonesHuman Activity Recognition Using Smartphones Dataset
+## Data Source
+*Original data source https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+*Original description of the dataset: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+SmartphonesHuman Activity Recognition Using Smartphones Dataset
 ________________________________________
 #Structure of Data present in source data folders
 •	README.txt: Details of all the files in downloaded folder
@@ -26,7 +26,7 @@ ________________________________________
 •	test/X_test.txt: Test set.
 •	test/y_test.txt: Test activity Id Labels
 •	test/subject_train.txt: Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.
-The following files are available for the train and test data. Their descriptions are equivalent.
+#The following files are available for the train and test data. Their descriptions are equivalent.
 •	train/Inertial Signals/total_acc_x_train.txt: The acceleration signal from the smartphone accelerometer X axis in standard gravity units g. Every row shows a 128 element vector. The same description applies for the
 total_acc_x_train.txt and total_acc_z_train.txt files for the Y and Z axis.
 •	train/Inertial Signals/body_acc_x_train.txt: The body acceleration signal obtained by subtracting the gravity from
@@ -38,7 +38,7 @@ ________________________________________
 #Common Files
 •	features.txt: 561 rows of 2 varibles (feature Identifier and feature Name)
 •	activity_labels.txt: 6 rows of 2 variables (activity identifier and activity name)
-Test Dataset
+#Test Dataset
 •	xTest.txt: 2947 rows of 561 measurement variables. These are measurement variables listed in features.txt
 •	yTest.txt: 2947 rows of 1 variables. This is the activity Identifier
 •	subjectTest.txt: 2497 rows of 1 variable (subject Identifier)
@@ -47,18 +47,18 @@ Test Dataset
 •	yTrain.txt: 7352 rows of 1 variables. This is the activity Identifier
 •	subjectTrain.txt: 7352 rows of 1 variable (subject Identifier)
 #Map of aggregated Data
-Variable Names	subjectId	activityId	(variable names from features.txt)
-Data	subjectTest.txt	yTest.txt	xTest.txt
-Data	subjectTrain.txt	yTrain.txt	xTrain.txt
+*Variable Names	subjectId	activityId	(variable names from features.txt)
+*Data	subjectTest.txt	yTest.txt	xTest.txt
+*Data	subjectTrain.txt	yTrain.txt	xTrain.txt
 ________________________________________
-##Requirements & Details of Transformations through run_analysis.Rscript
+##Requirements and Details of Transformations through run_analysis.Rscript
 #Requirements
 run_analysis.R script has the following requirements to perform transformation on UCI HAR Dataset.
-1.	Merges the training and the test sets to create one data set.
-2.	Extracts only the measurements on the mean and standard deviation for each measurement.
-3.	Uses descriptive activity names to name the activities in the data set
-4.	Appropriately labels the data set with descriptive activity names.
-5.	Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+*1.	Merges the training and the test sets to create one data set.
+*2.	Extracts only the measurements on the mean and standard deviation for each measurement.
+*3.	Uses descriptive activity names to name the activities in the data set
+*4.	Appropriately labels the data set with descriptive activity names.
+*5.	Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 #Detailed Functions of run_analysis.R Script
 •	Downloads the dataset from the URL mentioned above and unzips it to create UCI HAR Dataset folder
 •	Imports "test" and "train" datsets and creates data frames from then and then Merges the training and the test sets
@@ -70,16 +70,16 @@ to create one data frame.
 •	Reshapes dataset to create a data frame with average of each measurement variable for each activity and each subject
 •	Writes new tidy data frame to a text file to create the required tidy data set file of 180 observations and 68 columns (2 columns for activityName and subjectID and 66 columns for measurement variables)
 ________________________________________
-Transformations Performed on the original dataset.
+##Transformations Performed on the original dataset.
 Merging the training and the test sets to create one data set.
-Activities:
+#Activities:
 •	Download the dataset from the URL mentioned above and unzip it to create UCI HAR Dataset folder.
 •	Script Imports test and train datsets and creates data frames from then and then merges the training and the test sets to create one data frame.
-All files to be used as listed above are imported to created data frames and column variables names are updated as follows
-data.frame	Variable Names
-featureVariables	"varId", "varName"
-activityLabels	"activityId", "activityName"
-xTest	featureVariables$varName
+#All files to be used as listed above are imported to created data frames and column variables names are updated as follows
+*data.frame	Variable Names
+*features	"varId", "varName"
+*activityLabels	"activityId", "activityName"
+*xTest	featureVariables$varName
 yTest	"activityId"
 subjectTest	"subjectId"
 xTrain	featureVariables$varName
@@ -90,34 +90,32 @@ subjectTest, yTest, xTest were column bind using cbind function to create testDa
 Aggregared and Merged Dataset
 testData and trainData data.frame were rowbound using rbind function to create final aggregated dataset/data.frameAggregateData with 10299 rows and 563 columns
 Below code shows few details of AggregateData
-> head(names(AggregateData),10)
- [1] "subjectId"         "activityId"        "tBodyAcc-mean()-X" "tBodyAcc-mean()-Y"
- [5] "tBodyAcc-mean()-Z" "tBodyAcc-std()-X"  "tBodyAcc-std()-Y"  "tBodyAcc-std()-Z" 
- [9] "tBodyAcc-mad()-X"  "tBodyAcc-mad()-Y" 
-> 
+#> head(names(AggregateData),10)
+# [1] "subjectId"         "activityId"        "tBodyAcc-mean()-X" "tBodyAcc-mean()-Y"
+# [5] "tBodyAcc-mean()-Z" "tBodyAcc-std()-X"  "tBodyAcc-std()-Y"  "tBodyAcc-std()-Z" 
+# [9] "tBodyAcc-mad()-X"  "tBodyAcc-mad()-Y" 
+#> 
 
-> head(AggregateData[1:5])
-  subjectId activityId tBodyAcc-mean()-X tBodyAcc-mean()-Y tBodyAcc-mean()-Z
-1         2          5         0.2571778       -0.02328523       -0.01465376
-2         2          5         0.2860267       -0.01316336       -0.11908252
-3         2          5         0.2754848       -0.02605042       -0.11815167
-4         2          5         0.2702982       -0.03261387       -0.11752018
-5         2          5         0.2748330       -0.02784779       -0.12952716
-6         2          5         0.2792199       -0.01862040       -0.11390197
-> 
+#> head(AggregateData[1:3])
+# subjectId activityId tBodyAcc-mean()-X tBodyAcc-mean()-Y tBodyAcc-mean()-Z
+#1         2          5         0.2571778       -0.02328523       -0.01465376
+#2         2          5         0.2860267       -0.01316336       -0.11908252
+#3         2          5         0.2754848       -0.02605042       -0.11815167
+#> 
 ________________________________________
-Extraction of only the measurements on the mean and standard deviation for each measurement.
-Activities:
-•	Extract a subset of data with only the measurements on the mean mean() and standard deviation std() for
-each measurement
-Extraction of selected measurement values
-•	grep functions are used to search for occurance of mean mean() and standard deviation std() in AggregateData
-variable Names using escape characters.
-•	Using escape characters to search exactly for mean() and std() occurance helps to exclude meanFreq()-Xmeasurements
-and/or angle measurements where the term mean exists
-•	The resulting selection would have only 66 measurement variables.
-Below code shows search using grep functions in column names of AggregateData data frame.
-> head(featureVariables[grepl("mean\\(\\)|std\\(\\)", names(AggregateData)), ], 10)
+#Extraction of only the measurements on the mean and standard deviation for each measurement.
+#Activities:
+#•	Extract a subset of data with only the measurements on the mean mean() and standard deviation std() for
+#each measurement
+#Extraction of selected measurement values
+#•	grep functions are used to search for occurance of mean mean() and standard deviation std() in AggregateData
+#  variable Names using escape characters.
+#•	Using escape characters to search exactly for mean() and std() occurance helps to exclude meanFreq()-Xmeasurements
+#  and/or angle measurements where the term mean exists
+#•	The resulting selection would have only 66 measurement variables.
+
+#Below code shows search using grep functions in column names of AggregateData data frame.
+#> head(featureVariables[grepl("mean\\(\\)|std\\(\\)", names(AggregateData)), ], 10)
    varId              varName
 3      3    tBodyAcc-mean()-Z
 4      4     tBodyAcc-std()-X
@@ -243,70 +241,70 @@ in write.table function
 #Variable Name	Details
 #activityName	Factor with 6 levels WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING
 #subjectId	Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30
-*tBodyAccMeanX	Average of Mean Value time doman Body Accelration in x direction
-*tBodyAccMeanY	Average of Mean Value time doman Body Accelration in Y direction
-*tBodyAccMeanZ	Average of Mean Value time doman Body Accelration in Z direction
-*tBodyAccStdX	Average of Standard deviation time doman Body Accelration in x direction
-*tBodyAccStdY	Average of Standard deviation time doman Body Accelration in Y direction
-*tBodyAccStdZ	Average of Standard deviation time doman Body Accelration in Z direction
-*tGravityAccMeanX	Average of Mean Value time doman Gravity Accelrationin x direction
-*tGravityAccMeanY	Average of Mean Value time doman Gravity Accelrationin Y direction
-*tGravityAccMeanZ	Average of Mean Value time doman Gravity Accelrationin Z direction
-*tGravityAccStdX	Average of Standard deviation time doman Gravity Accelrationin x direction
-*tGravityAccStdY	Average of Standard deviation time doman Gravity Accelrationin Y direction
-*tGravityAccStdZ	Average of Standard deviation time doman Gravity Accelrationin Z direction
-*tBodyAccJerkMeanX	Average of Mean Value time doman Body Accelration Jerk in x direction
-*tBodyAccJerkMeanY	Average of Mean Value time doman Body Accelration Jerk in Y direction
-*tBodyAccJerkMeanZ	Average of Mean Value time doman Body Accelration Jerk in Z direction
-*tBodyAccJerkStdX	Average of Standard deviation time doman Body Accelration Jerk in x direction
-*tBodyAccJerkStdY	Average of Standard deviation time doman Body Accelration Jerk in Y direction
-*tBodyAccJerkStdZ	Average of Standard deviation time doman Body Accelration Jerk in Z direction
-*tBodyGyroMeanX	Average of Mean Value time doman Body Gyro in x direction
-*tBodyGyroMeanY	Average of Mean Value time doman Body Gyro in Y direction
-*tBodyGyroMeanZ	Average of Mean Value time doman Body Gyro in Z direction
-*tBodyGyroStdX	Average of Standard deviation time doman Body Gyro in x direction
-*tBodyGyroStdY	Average of Standard deviation time doman Body Gyro in Y direction
-*tBodyGyroStdZ	Average of Standard deviation time doman Body Gyro in Z direction
-*tBodyGyroJerkMeanX	Average of Mean Value time doman Body Gyro Jerk signal in x direction
-*tBodyGyroJerkMeanY	Average of Mean Value time doman Body Gyro Jerk signal in Y direction
-*tBodyGyroJerkMeanZ	Average of Mean Value time doman Body Gyro Jerk signal in Z direction
-*tBodyGyroJerkStdX	Average of Standard deviation time doman Body Gyro Jerk signal in x direction
-*tBodyGyroJerkStdY	Average of Standard deviation time doman Body Gyro Jerk signal in Y direction
-*tBodyGyroJerkStdZ	Average of Standard deviation time doman Body Gyro Jerk signal in Z direction
-*tBodyAccMagMean	Average of Mean Value time doman Body Accelration magnitude
-*tBodyAccMagStd	Average of Standard deviation time doman Body Accelration magnitude
-*tGravityAccMagMean	Average of Mean Value time doman Gravity Accelration magnitude
-*tGravityAccMagStd	Average of Standard deviation time doman Gravity Accelration magnitude
-*tBodyAccJerkMagMean	Average of Mean Value time doman Body Accelration jerk magnitude
-*tBodyAccJerkMagStd	Average of Standard deviation time doman Body Accelration jerk magnitude
-*tBodyGyroMagMean	Average of Mean Value time doman Body Gyro magnitude
-*tBodyGyroMagStd	Average of Standard deviation time doman Body Gyro magnitude
-*tBodyGyroJerkMagMean	Average of Mean Value time doman Body Gyro Jerk magnitude
-*tBodyGyroJerkMagStd	Average of Standard deviation time doman Body Gyro Jerk magnitude
-*fBodyAccMeanX	Average of Mean Value frequency domainBody Accelration in x direction
-*fBodyAccMeanY	Average of Mean Value frequency domainBody Accelration in Y direction
-*fBodyAccMeanZ	Average of Mean Value frequency domainBody Accelration in Z direction
-*fBodyAccStdX	Average of Standard deviation frequency domainBody Accelration in x direction
-*fBodyAccStdY	Average of Standard deviation frequency domainBody Accelration in Y direction
-*fBodyAccStdZ	Average of Standard deviation frequency domainBody Accelration in Z direction
-*fBodyAccJerkMeanX	Average of Mean Value frequency domainBody Accelration Jerk in x direction
-*fBodyAccJerkMeanY	Average of Mean Value frequency domainBody Accelration Jerk in Y direction
-*fBodyAccJerkMeanZ	Average of Mean Value frequency domainBody Accelration Jerk in Z direction
-*fBodyAccJerkStdX	Average of Standard deviation frequency domainBody Accelration Jerk in x direction
-*fBodyAccJerkStdY	Average of Standard deviation frequency domainBody Accelration Jerk in Y direction
-*fBodyAccJerkStdZ	Average of Standard deviation frequency domainBody Accelration Jerk in Z direction
-*fBodyGyroMeanX	Average of Mean Value frequency domainBody Gyro in x direction
-*fBodyGyroMeanY	Average of Mean Value frequency domainBody Gyro in Y direction
-*fBodyGyroMeanZ	Average of Mean Value frequency domainBody Gyro in Z direction
-*fBodyGyroStdX	Average of Standard deviation frequency domainBody Gyro in x direction
-*fBodyGyroStdY	Average of Standard deviation frequency domainBody Gyro in Y direction
-*fBodyGyroStdZ	Average of Standard deviation frequency domainBody Gyro in Z direction
-*fBodyAccMagMean	Average of Mean Value frequency domainBody Accelration magnitude
-*fBodyAccMagStd	Average of Standard deviation frequency domainBody Accelration magnitude
-*fBodyBodyAccJerkMagMean	Average of Mean Value frequency domainBody Accelration jerk magnitude
-*fBodyBodyAccJerkMagStd	Average of Standard deviation frequency domainBody Accelration jerk magnitude
-*fBodyBodyGyroMagMean	Average of Mean Value frequency domainBody Body Gyro magnitude
-*fBodyBodyGyroMagStd	Average of Standard deviation frequency domainBody Body Gyro magnitude
-*fBodyBodyGyroJerkMagMean	Average of Mean Value frequency domainBody Body Gyro jerk magnitude
-*fBodyBodyGyroJerkMagStd	Average of Standard deviation frequency domainBody Body Gyro jerk magnitude
+#*tBodyAccMeanX	Average of Mean Value time doman Body Accelration in x direction
+#*tBodyAccMeanY	Average of Mean Value time doman Body Accelration in Y direction
+#*tBodyAccMeanZ	Average of Mean Value time doman Body Accelration in Z direction
+#*tBodyAccStdX	Average of Standard deviation time doman Body Accelration in x direction
+#*tBodyAccStdY	Average of Standard deviation time doman Body Accelration in Y direction
+#*tBodyAccStdZ	Average of Standard deviation time doman Body Accelration in Z direction
+#*tGravityAccMeanX	Average of Mean Value time doman Gravity Accelrationin x direction
+#*tGravityAccMeanY	Average of Mean Value time doman Gravity Accelrationin Y direction
+#*tGravityAccMeanZ	Average of Mean Value time doman Gravity Accelrationin Z direction
+#*tGravityAccStdX	Average of Standard deviation time doman Gravity Accelrationin x direction
+#*tGravityAccStdY	Average of Standard deviation time doman Gravity Accelrationin Y direction
+#*tGravityAccStdZ	Average of Standard deviation time doman Gravity Accelrationin Z direction
+#*tBodyAccJerkMeanX	Average of Mean Value time doman Body Accelration Jerk in x direction
+#*tBodyAccJerkMeanY	Average of Mean Value time doman Body Accelration Jerk in Y direction
+#*tBodyAccJerkMeanZ	Average of Mean Value time doman Body Accelration Jerk in Z direction
+#*tBodyAccJerkStdX	Average of Standard deviation time doman Body Accelration Jerk in x direction
+#*tBodyAccJerkStdY	Average of Standard deviation time doman Body Accelration Jerk in Y direction
+#*tBodyAccJerkStdZ	Average of Standard deviation time doman Body Accelration Jerk in Z direction
+#*tBodyGyroMeanX	Average of Mean Value time doman Body Gyro in x direction
+#*tBodyGyroMeanY	Average of Mean Value time doman Body Gyro in Y direction
+#*tBodyGyroMeanZ	Average of Mean Value time doman Body Gyro in Z direction
+#*tBodyGyroStdX	Average of Standard deviation time doman Body Gyro in x direction
+#*tBodyGyroStdY	Average of Standard deviation time doman Body Gyro in Y direction
+#*tBodyGyroStdZ	Average of Standard deviation time doman Body Gyro in Z direction
+#*tBodyGyroJerkMeanX	Average of Mean Value time doman Body Gyro Jerk signal in x direction
+#*tBodyGyroJerkMeanY	Average of Mean Value time doman Body Gyro Jerk signal in Y direction
+#*tBodyGyroJerkMeanZ	Average of Mean Value time doman Body Gyro Jerk signal in Z direction
+#*tBodyGyroJerkStdX	Average of Standard deviation time doman Body Gyro Jerk signal in x direction
+#*tBodyGyroJerkStdY	Average of Standard deviation time doman Body Gyro Jerk signal in Y direction
+#*tBodyGyroJerkStdZ	Average of Standard deviation time doman Body Gyro Jerk signal in Z direction
+#*tBodyAccMagMean	Average of Mean Value time doman Body Accelration magnitude
+#*tBodyAccMagStd	Average of Standard deviation time doman Body Accelration magnitude
+#*tGravityAccMagMean	Average of Mean Value time doman Gravity Accelration magnitude
+#*tGravityAccMagStd	Average of Standard deviation time doman Gravity Accelration magnitude
+#*tBodyAccJerkMagMean	Average of Mean Value time doman Body Accelration jerk magnitude
+#*tBodyAccJerkMagStd	Average of Standard deviation time doman Body Accelration jerk magnitude
+#*tBodyGyroMagMean	Average of Mean Value time doman Body Gyro magnitude
+#*tBodyGyroMagStd	Average of Standard deviation time doman Body Gyro magnitude
+#*tBodyGyroJerkMagMean	Average of Mean Value time doman Body Gyro Jerk magnitude
+#*tBodyGyroJerkMagStd	Average of Standard deviation time doman Body Gyro Jerk magnitude
+#*fBodyAccMeanX	Average of Mean Value frequency domainBody Accelration in x direction
+#*fBodyAccMeanY	Average of Mean Value frequency domainBody Accelration in Y direction
+#*fBodyAccMeanZ	Average of Mean Value frequency domainBody Accelration in Z direction
+#*fBodyAccStdX	Average of Standard deviation frequency domainBody Accelration in x direction
+#*fBodyAccStdY	Average of Standard deviation frequency domainBody Accelration in Y direction
+#*fBodyAccStdZ	Average of Standard deviation frequency domainBody Accelration in Z direction
+#*fBodyAccJerkMeanX	Average of Mean Value frequency domainBody Accelration Jerk in x direction
+#*fBodyAccJerkMeanY	Average of Mean Value frequency domainBody Accelration Jerk in Y direction
+#*fBodyAccJerkMeanZ	Average of Mean Value frequency domainBody Accelration Jerk in Z direction
+#*fBodyAccJerkStdX	Average of Standard deviation frequency domainBody Accelration Jerk in x direction
+#*fBodyAccJerkStdY	Average of Standard deviation frequency domainBody Accelration Jerk in Y direction
+#*fBodyAccJerkStdZ	Average of Standard deviation frequency domainBody Accelration Jerk in Z direction
+#*fBodyGyroMeanX	Average of Mean Value frequency domainBody Gyro in x direction
+#*fBodyGyroMeanY	Average of Mean Value frequency domainBody Gyro in Y direction
+#*fBodyGyroMeanZ	Average of Mean Value frequency domainBody Gyro in Z direction
+#*fBodyGyroStdX	Average of Standard deviation frequency domainBody Gyro in x direction
+#*fBodyGyroStdY	Average of Standard deviation frequency domainBody Gyro in Y direction
+#*fBodyGyroStdZ	Average of Standard deviation frequency domainBody Gyro in Z direction
+#*fBodyAccMagMean	Average of Mean Value frequency domainBody Accelration magnitude
+#*fBodyAccMagStd	Average of Standard deviation frequency domainBody Accelration magnitude
+#*fBodyBodyAccJerkMagMean	Average of Mean Value frequency domainBody Accelration jerk magnitude
+#*fBodyBodyAccJerkMagStd	Average of Standard deviation frequency domainBody Accelration jerk magnitude
+#*fBodyBodyGyroMagMean	Average of Mean Value frequency domainBody Body Gyro magnitude
+#*fBodyBodyGyroMagStd	Average of Standard deviation frequency domainBody Body Gyro magnitude
+#*fBodyBodyGyroJerkMagMean	Average of Mean Value frequency domainBody Body Gyro jerk magnitude
+#*fBodyBodyGyroJerkMagStd	Average of Standard deviation frequency domainBody Body Gyro jerk magnitude
 
