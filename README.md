@@ -9,10 +9,9 @@ Data for analysis is downloaded from the below URL
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
 ##Files Included in Repository
-
-*run_analysis.R
-*CodeBook.md
-*tidy.txt
+* run_analysis.R
+* CodeBook.md
+* tidy.txt
 
 ##Details of run_analysis.R script
 This is the script used to perform analysis on raw data to create a tidy datafile called tidy.txt
