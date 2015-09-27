@@ -26,10 +26,12 @@ ________________________________________
 *	subject_train.txt: Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.
 
 The following files are available for the train and test data. Their descriptions are equivalent:
-* train/Inertial Signals/total_acc_x_train.txt: The acceleration signal from the smartphone accelerometer X axis in standard gravity units g. Every row shows a 128 element vector. ###The same description applies for the:
+* train/Inertial Signals/total_acc_x_train.txt: The acceleration signal from the smartphone accelerometer X axis in standard gravity units g. Every row shows a 128 element vector.
 *	total_acc_x_train.txt and total_acc_z_train.txt files for the Y and Z axis.
 *	train/Inertial Signals/body_acc_x_train.txt: The body acceleration signal obtained by subtracting the gravity from the total acceleration.
-*	train/Inertial Signals/body_gyro_x_train.txt: The angular velocity vector measured by the gyroscope for each window sample. The units are radians/second. 
+*	train/Inertial Signals/body_gyro_x_train.txt: The angular velocity vector measured by the gyroscope for each window sample.
+
+The units are radians/second. 
 Note: All the files in train/Inertial Signals and test/Inertial Signals will not be used for in this analysis
 
 ________________________________________
@@ -62,11 +64,12 @@ ________________________________________
 *	Variable Names subjectId activityId (variable names from features.txt)
 *	Data subjectTest.txt yTest.txt xTest.txt
 *	Data subjectTrain.txt yTrain.txt xTrain.txt 
+
 ________________________________________
 
-###Requirements and Details of Transformations through run_analysis.Rscript
+##Requirements and Details of Transformations through run_analysis.Rscript
 
-####Requirements run_analysis.R script has the following requirements to perform transformation on UCI HAR Dataset.
+###Requirements run_analysis.R script has the following requirements to perform transformation on UCI HAR Dataset.
 
 1. Merges the training and the test sets to create one data set.
 2. Extracts only the measurements on the mean and standard deviation for each measurement. 
@@ -74,7 +77,7 @@ ________________________________________
 4. Appropriately labels the data set with descriptive activity names. 
 5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
 
-####Detailed Functions of run_analysis.R Script:
+###Detailed Functions of run_analysis.R Script:
 
 *	Downloads the dataset from the URL mentioned above and unzips it to create data folder
 *	Imports "test" and "train" datsets and creates data frames from then and then merges the training and the test sets to create one data frame.
@@ -83,6 +86,7 @@ ________________________________________
 *	Appropriately labels the data set with descriptive activity names in place of activity Ids
 *	Reshapes dataset to create a data frame with average of each measurement variable for each activity and each subject
 *	Writes new tidy data frame to a text file to create the required tidy data set file of 180 observations and 68 columns (2 columns for activityName and subjectID and 66 columns for measurement variables) 
+
 ________________________________________
 
 ##Merge Activities
@@ -92,12 +96,14 @@ ________________________________________
 
 ##Aggregated and Merged Dataset
 
-testData and trainData data.frame were rowbound using rbind function to create final dataset/data.frame AllData with 10299 rows and 563 columns.
+testData and trainData data.frame were rowbound using rbind function to create final dataset/data.frame called AllData with 10299 rows and 563 columns.
+
 ________________________________________
 
 ##Final Dataset finalData
 
 "activityId" column which is no longer needed because we mapped acitityName to activityId in the dataset, "activityId" column is dropped to create final data.frame called finalData.This data frame has 10299 observations and 68 columns.2 columns for "activityName" and "subjectId" and remaing 66 for measurement variables with measurements 3 on the mean() and std(). 
+
 ________________________________________
 
 ## Tidy Data Set with the average of each variable for each activity and each subject 
