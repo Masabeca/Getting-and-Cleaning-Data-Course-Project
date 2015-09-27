@@ -3,6 +3,7 @@ Course Project for Getting and Cleaning Data based on Human Activity Recognition
 ________________________________________
 
 ##Information about Source Data Experiment
+
 The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data.
 ________________________________________
 
@@ -24,8 +25,7 @@ ________________________________________
 *	y_test.txt: Test activity Id Labels
 *	subject_train.txt: Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.
 
-###The following files are available for the train and test data. Their descriptions are equivalent:
-
+The following files are available for the train and test data. Their descriptions are equivalent:
 * train/Inertial Signals/total_acc_x_train.txt: The acceleration signal from the smartphone accelerometer X axis in standard gravity units g. Every row shows a 128 element vector. ###The same description applies for the:
 *	total_acc_x_train.txt and total_acc_z_train.txt files for the Y and Z axis.
 *	train/Inertial Signals/body_acc_x_train.txt: The body acceleration signal obtained by subtracting the gravity from the total acceleration.
@@ -43,6 +43,7 @@ ________________________________________
 
 
 ###Test Dataset
+
 *	xTest.txt: 2947 rows of 561 measurement variables. These are measurement variables listed in features.txt
 *	yTest.txt: 2947 rows of 1 variables. This is the activity Identifier
 *	subjectTest.txt: 2497 rows of 1 variable (subject Identifier)
@@ -52,7 +53,8 @@ ________________________________________
 
 *	xTrain.txt: 7352 rows of 561 measurement variables. These are measurement variables listed in features.txt
 *	yTrain.txt: 7352 rows of 1 variables. This is the activity Identifier
-*	subjectTrain.txt: 7352 rows of 1 variable (subject Identifier) 
+*	subjectTrain.txt: 7352 rows of 1 variable (subject Identifier)
+
 ________________________________________
 
 ###Map of aggregated Data
@@ -62,9 +64,9 @@ ________________________________________
 *	Data subjectTrain.txt yTrain.txt xTrain.txt 
 ________________________________________
 
-##Requirements and Details of Transformations through run_analysis.Rscript
+###Requirements and Details of Transformations through run_analysis.Rscript
 
-###Requirements run_analysis.R script has the following requirements to perform transformation on UCI HAR Dataset.
+####Requirements run_analysis.R script has the following requirements to perform transformation on UCI HAR Dataset.
 
 1. Merges the training and the test sets to create one data set.
 2. Extracts only the measurements on the mean and standard deviation for each measurement. 
@@ -72,7 +74,7 @@ ________________________________________
 4. Appropriately labels the data set with descriptive activity names. 
 5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
 
-###Detailed Functions of run_analysis.R Script:
+####Detailed Functions of run_analysis.R Script:
 
 *	Downloads the dataset from the URL mentioned above and unzips it to create data folder
 *	Imports "test" and "train" datsets and creates data frames from then and then merges the training and the test sets to create one data frame.
@@ -103,11 +105,14 @@ ________________________________________
 ## Activities:
 
 * Reshape dataset to create a data frame with average of each measurement variable for each activity and each subject
-*	Writes new tidy data frame to a text file to create the required tidy data ##Transformation Details - melt and dcast
+*	Writes new tidy data frame to a text file to create the required tidy data
+
+##Transformation Details - melt and dcast
 * reshape2 package is leveraged for reshaping the dataset. library(reshape2)
 * melt function of reshape2 package is leveraged to reshape data based on id variables "activityName" and "subjectId" against all measurement values variables to create finalDataMelt data frame.
 *	melt takes wide-format data and melts it into long-format data.
 *	finalDataMelt data frame has 679734 observations of 4 variables 
+
 ________________________________________ 
 
 ##Tidy Data File
