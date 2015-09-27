@@ -20,7 +20,7 @@ This is the script used to perform analysis on raw data to create a tidy datafil
 
 * Downloads the dataset from the URL mentioned above and unzip it to create data folder
 * Imports test and train datsets and creates data frames and then merges the training and the test sets in one data             frame.
-* Extracts a subset of data with only the measurements on the mean mean() and standard deviation std() for each measurement. 
+* Extracts a subset of data with only the measurements on the mean and standard deviation for each measurement. 
 * Updates the variable names in dataframe variable names for data frame to improve readibility
 * Appropriately labels the data set with descriptive activity names in place of activity Ids
 * Reshapes dataset to create a data frame with average of each measurement variable for each activity and each subject
@@ -28,7 +28,7 @@ This is the script used to perform analysis on raw data to create a tidy datafil
 
 ###Running the script
 
-To run the script, you just have to download the script and source the script from your working directory in R source(run_analysis.R)
+To run the script, just have to download the script and source the script from your working directory in R source(run_analysis.R)
 
 ##Details of CodeBook.md
 
